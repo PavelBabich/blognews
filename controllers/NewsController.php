@@ -5,6 +5,7 @@ include_once ROOT . '/models/News.php';
 class NewsController
 {
 
+    //выводит список новостей
     public function actionIndex()
     {
         $newsList = array();
@@ -17,6 +18,7 @@ class NewsController
         return true;
     }
 
+    //выводит новость по идентификатору
     public function actionView($id)
     {
         if ($id) {
