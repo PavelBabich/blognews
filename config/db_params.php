@@ -1,5 +1,4 @@
 <?php
-
 return array(
     'host' => 'localhost',
     'dbname' => 'blognews',
