@@ -14,6 +14,7 @@ class News{
             $result->setFetchMode(PDO::FETCH_ASSOC);
 
             $newsItem = $result->fetch();
+            $newsItem['date'] = date('F jS Y, g:i A', strtotime($newsItem['date']));
             
             return $newsItem;
         }
@@ -23,7 +24,7 @@ class News{
     public static function getNewsList(){
         $db = Db::getConnection();
 
-        $result = $db->query("SELECT id, title, date, short_content FROM news ORDER BY date DESC LIMIT 10");
+        $result = $db->query("SELECT * FROM news ORDER BY date DESC LIMIT 10");
 
         $newsList = array();
 
@@ -31,8 +32,11 @@ class News{
         while($row = $result->fetch()){
             $newsList[$i]['id'] = $row['id'];
             $newsList[$i]['title'] = $row['title'];
-            $newsList[$i]['date'] = $row['date'];
+            $newsList[$i]['date'] = date('F jS Y', strtotime($row['date']));
             $newsList[$i]['short_content'] = $row['short_content'];
+            $newsList[$i]['content'] = $row['content'];
+            $newsList[$i]['preview'] = $row['preview'];
+
             $i++;
         }
 

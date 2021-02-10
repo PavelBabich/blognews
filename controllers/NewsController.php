@@ -5,15 +5,17 @@ include_once ROOT . '/models/News.php';
 class NewsController
 {
 
+    public function actionIndex(){
+        echo "NewsController -> actionIndex";
+        return true;
+    }
+
     //выводит список новостей
-    public function actionIndex()
+    public function actionCatalog()
     {
         $newsList = array();
         $newsList = News::getNewsList();
-
-        echo '<pre>';
-        print_r($newsList);
-        echo '<pre>';
+        require_once (ROOT.'/views/site/catalog.php');
 
         return true;
     }
@@ -24,9 +26,7 @@ class NewsController
         if ($id) {
             $newsItem = News::getNewsItemById($id);
 
-            echo '<pre>';
-            print_r($newsItem);
-            echo '<pre>';
+            require_once(ROOT.'/views/site/post.php');
             return true;
         }
     }

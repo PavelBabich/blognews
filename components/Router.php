@@ -38,14 +38,19 @@ class Router{
 
                 $parametrs = $segments;
 
-                //подключить файл класса-контроллера
+                // echo $controllerName . '<br>';
+                // echo $actionName . '<br>';
+                //echo $parametrs;
+                
+
+                // //подключить файл класса-контроллера
                 $controllerFile = ROOT.'/controllers/'.$controllerName.'.php';
 
                 if(file_exists($controllerFile)){
                     require_once($controllerFile);
                 }
 
-                //Создать объект, вызвать метод
+                // //Создать объект, вызвать метод
                 $controllerObject = new $controllerName;
                 $result = call_user_func_array(array($controllerObject, $actionName), $parametrs);
                 if($result != null){
