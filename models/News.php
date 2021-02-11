@@ -24,7 +24,7 @@ class News{
     public static function getNewsList(){
         $db = Db::getConnection();
 
-        $result = $db->query("SELECT * FROM news ORDER BY date DESC LIMIT 10");
+        $result = $db->query("SELECT * FROM news ORDER BY date DESC");
 
         $newsList = array();
 
@@ -36,6 +36,7 @@ class News{
             $newsList[$i]['short_content'] = $row['short_content'];
             $newsList[$i]['content'] = $row['content'];
             $newsList[$i]['preview'] = $row['preview'];
+            $newsList[$i]['count_views'] = $row['count_views'];
 
             $i++;
         }

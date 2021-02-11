@@ -12,6 +12,9 @@
         </h1>
 
         <!-- Blog Post -->
+        <?php if (empty($newsList)): ?>
+                <p>Список постов пуст</p>
+            <?php else: ?>
         <?php foreach($newsList as $newsItem):?>
         <div class="card mb-4">
           <img class="card-img-top" src="/<?php echo $newsItem['preview'] ;?>" alt="Card image cap">
@@ -22,9 +25,13 @@
           </div>
           <div class="card-footer text-muted">
             Posted on <?php echo $newsItem['date'];?>
+            <br>
+            Views: <?php echo $newsItem['count_views'];?>
           </div>
         </div>
-        <?php endforeach;?>
+        <?php endforeach;
+        endif;?>
+
 
         <!-- Pagination -->
         <ul class="pagination justify-content-center mb-4">

@@ -15,7 +15,6 @@
 
   <!-- Custom styles for this template -->
   <link href="/template/css/blog-home.css" rel="stylesheet">
-
 </head>
 
 <body>
