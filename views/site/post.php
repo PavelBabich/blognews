@@ -1,5 +1,5 @@
-<?php include ROOT . '/components/CountViews.php'; ?>
-<?php $count = CountViews::setCountViews($newsItem['id']) ;?>
+<?php require_once ROOT . '/models/News.php'; ?>
+<?php News::setCountViews($newsItem['id']) ;?>
 
 <?php include ROOT . '/views/layouts/header.php'; ?>
 

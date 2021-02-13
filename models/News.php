@@ -21,10 +21,10 @@ class News{
     }
 
     //возвращает список новостей
-    public static function getNewsList(){
+    public static function getNewsList($sort, $typeOfSort){
         $db = Db::getConnection();
 
-        $result = $db->query("SELECT * FROM news ORDER BY date DESC");
+        $result = $db->query("SELECT * FROM news ORDER BY $sort $typeOfSort");
 
         $newsList = array();
 
@@ -42,5 +42,12 @@ class News{
         }
 
         return $newsList;
+    }
+
+    public static function setCountViews($id)
+    {
+        $db = Db::getConnection();
+
+        $db->query("UPDATE news SET count_views = count_views + 1 WHERE id=".$id);
     }
 }

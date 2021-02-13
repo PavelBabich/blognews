@@ -1,3 +1,5 @@
+<?php require_once ROOT . '/models/User.php'; ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -37,10 +39,10 @@
             <a class="nav-link" href="/news">News</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Account</a>
+            <a class="nav-link" href="/account">Account</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Log In</a>
+            <a class="nav-link" href="/user/logout">Log Out</a>
           </li>
         </ul>
       </div>

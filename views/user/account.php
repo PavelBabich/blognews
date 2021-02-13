@@ -1,10 +1,11 @@
-<?php include ROOT . '/views/layouts/header.php'; ?>
+<?php include ROOT . '/views/layouts/header.php';?>
 
 
 <div class="container">
   <div class="row">
     <div class="col-lg-8">
-      <h1>Добро пожаловать!</h1>
+      <h1 class="mt-4">Кабинет пользователя</h1>
+
     </div>
   </div>
 </div>
