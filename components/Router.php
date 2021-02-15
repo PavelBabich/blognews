@@ -65,17 +65,16 @@ class Router
                 if (file_exists($controllerFile)) {
                     require_once($controllerFile);
                     $controllerObject = new $controllerName;
-                    $result = call_user_func_array(array($controllerObject, $actionName), $parametrs);
 
                     if (method_exists($controllerObject, $actionName)) {
-                        //$result = call_user_func_array(array($controllerObject, $actionName), $parametrs);
+                        $result = call_user_func_array(array($controllerObject, $actionName), $parametrs);
                     } else {
-                        // require_once(ROOT . '/views/site/404.php');
-                        // exit;
+                        require_once(ROOT . '/views/site/404.php');
+                        exit;
                     }
                 } else {
-                    // require_once(ROOT . '/views/site/404.php');
-                    // exit;
+                    require_once(ROOT . '/views/site/404.php');
+                    exit;
                 }
 
 
