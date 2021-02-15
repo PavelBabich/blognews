@@ -1,12 +1,15 @@
 <?php include ROOT . '/views/layouts/header.php'; ?>
 
 
-<div class="container">
-  <div class="row">
-    <div class="col-lg-8">
-      <h1>Добро пожаловать!</h1>
-    </div>
-  </div>
+<div style="background-image: url(/template/images/home-bg.jpg);background-position: center center; background-size: cover;
+background-repeat: no-repeat;
+min-height: calc(100vh - 176px);
+width: 100%;
+display: flex;
+justify-content: center;
+align-items: center;
+flex-direction: column;">
+      <h1 style="color: white;">Добро пожаловать!</h1>
 </div>
 
 

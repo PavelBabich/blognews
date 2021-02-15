@@ -1,7 +1,7 @@
 <?php include ROOT . '/views/layouts/header.php';?>
 
 
-<div class="container">
+<div class="container" style="min-height: calc(100vh - 176px);">
   <div class="row">
     <div class="col-lg-8">
       <h1 class="mt-4">User account</h1>

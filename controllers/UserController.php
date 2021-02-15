@@ -53,7 +53,7 @@ class UserController
             if ($errors == null) {
 
                 //вызов функции регистрации
-                User::register($name, $surName, $email, $password1);
+                $result = User::register($name, $surName, $email, $password1);
             }
         }
 

@@ -53,7 +53,7 @@ class Router
 
                 $parametrs = $segments;
 
-                //передача в параметры тип сортировки
+                //передача в параметры данные сортировки
                 if ($parametrs == null && isset($_GET['sort']) && isset($_GET['type'])) {
                     array_push($parametrs, $_GET['sort'], $_GET['type']);
                 }
