@@ -46,25 +46,25 @@ class UserController
                 $errors[] = 'Пароли не совпадают';
             }
 
-            if(User::checkEmailExist($email)){
+            if (User::checkEmailExist($email)) {
                 $errors[] = 'Такой email уже существует';
             }
 
-            if($errors == null){
+            if ($errors == null) {
 
                 //вызов функции регистрации
-                $result = User::register($name, $surName, $email, $password1);
-                
+                User::register($name, $surName, $email, $password1);
             }
         }
 
-        require_once ROOT . '/views/user/register.php' ;
+        require_once ROOT . '/views/user/register.php';
 
         return true;
     }
 
     //аутенитфикация и авторизация пользователя
-    public function actionLogin(){
+    public function actionLogin()
+    {
 
         $email = '';
         $password = '';
@@ -85,26 +85,33 @@ class UserController
             }
 
             //аутентификация пользователя
-            $userId = User::checkUserData($email, $password);
+            $user = User::checkUserData($email, $password);
 
-            if($userId == false){
+            $userId = $user['id'];
+
+            if ($userId == false) {
                 $errors[] = 'Введены неправильные даные';
-            }else{
-                
+            } else {
+
                 //авторизация пользователя
                 User::auth($userId);
+
+                if ($user['role'] == 'admin') {
+                    User::checkAdmin($userId);
+                }
 
                 header("Location: /");
             }
         }
 
-        require_once ROOT . '/views/user/login.php' ;
+        require_once ROOT . '/views/user/login.php';
 
         return true;
     }
 
-    public function actionLogout(){
-        unset ($_SESSION['user']);
+    public function actionLogout()
+    {
+        unset($_SESSION['user'], $_SESSION['admin']);
 
         header("Location: /user/login");
     }

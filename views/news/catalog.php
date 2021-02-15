@@ -1,3 +1,4 @@
+  <?php require_once ROOT . '/models/User.php'; ?>
   <?php include ROOT . '/views/layouts/header.php'; ?>
   <!-- Page Content -->
   <div class="container">
@@ -11,17 +12,17 @@
 
         </h1>
 
-          <div class="dropdown">
-            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Sort by
-            </button>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-              <a class="dropdown-item" href="/news?sort=date&type=desc">Date added(newest)</a>
-              <a class="dropdown-item" href="/news?sort=date&type=asc">Date added(oldest)</a>
-              <a class="dropdown-item" href="/news?sort=count_views&type=desc">Views(more)</a>
-              <a class="dropdown-item" href="/news?sort=count_views&type=asc">Views(fewer)</a>
-            </div>
+        <div class="dropdown">
+          <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Sort by
+          </button>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <a class="dropdown-item" href="/news?sort=date&type=desc">Date added(newest)</a>
+            <a class="dropdown-item" href="/news?sort=date&type=asc">Date added(oldest)</a>
+            <a class="dropdown-item" href="/news?sort=count_views&type=desc">Views(more)</a>
+            <a class="dropdown-item" href="/news?sort=count_views&type=asc">Views(fewer)</a>
           </div>
+        </div>
 
 
         <!-- Blog Post -->
@@ -30,11 +31,14 @@
         <?php else : ?>
           <?php foreach ($newsList as $newsItem) : ?>
             <div class="card mb-4">
-              <img class="card-img-top" src="/<?php echo $newsItem['preview']; ?>" alt="Card image cap">
+              <img class="card-img-top" src="<?php echo $newsItem['image']; ?>" alt="Card image cap">
               <div class="card-body">
                 <h2 class="card-title"><?php echo $newsItem['title']; ?></h2>
                 <p class="card-text"><?php echo $newsItem['short_content']; ?></p>
                 <a href="/news/<?php echo $newsItem['id']; ?>" class="btn btn-primary">Read More &rarr;</a>
+                <?php if (isset($_SESSION['admin'])) : ?>
+                  <a href="/news/edit/<?php echo $newsItem['id']; ?>" class="btn btn-primary">Edit &rarr;</a>
+                <?php endif; ?>
               </div>
               <div class="card-footer text-muted">
                 Posted on <?php echo $newsItem['date']; ?>

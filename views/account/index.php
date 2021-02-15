@@ -4,8 +4,18 @@
 <div class="container">
   <div class="row">
     <div class="col-lg-8">
-      <h1 class="mt-4">Кабинет пользователя</h1>
-
+      <h1 class="mt-4">User account</h1>
+      <br>
+      <?php if(isset($_SESSION['admin'])):?>
+      <h4>Admin!</h4>
+      <br>
+      <?php endif;?>
+      <h4>Your name: <?php echo $user['name']; ?></h4>
+      <br>
+      <h4>Your surname: <?php echo $user['surname']; ?></h4>
+      <br>
+      <h4>Your email: <?php echo $user['email']; ?></h4>
+      <br>
     </div>
   </div>
 </div>

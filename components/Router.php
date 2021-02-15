@@ -21,12 +21,13 @@ class Router
 
     public function run()
     {
+
+        //получить строку запроса
+        $uri = $this->getURI();
+
         //проверяет, авторизован ли пользователь
-        if (!isset($_SESSION['user'])) {
+        if (!isset($_SESSION['user']) && $uri != 'user/register') {
             $uri = 'user/login';
-        } else {
-            //получить строку запроса
-            $uri = $this->getURI();
         }
 
         //проверить наличие такого запроса в routes.php

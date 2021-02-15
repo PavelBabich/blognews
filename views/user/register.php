@@ -41,7 +41,7 @@
                         </ul>
                     <?php endif; ?>
 
-                    <form data-toggle="validator" role="form" method="POST" action="#">
+                    <form data-toggle="validator" role="form" method="POST" action="">
                         <div class="form-group">
                             <label for="inputName" class="control-label">Ваше имя</label>
                             <input name="name" value="<?php echo $name; ?>" type="text" class="form-control" id="inputName" placeholder="Введите Ваше имя" required>

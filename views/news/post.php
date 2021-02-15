@@ -23,7 +23,7 @@
       <hr>
 
       <!-- Preview Image -->
-      <img class="img-fluid rounded" src="/<?php echo $newsItem['preview']?>" alt="">
+      <img class="img-fluid rounded" src="<?php echo $newsItem['image']?>" alt="">
 
       <hr>
 

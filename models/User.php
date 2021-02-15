@@ -91,7 +91,7 @@ class User
         $user = $result->fetch();
 
         if ($user) {
-            return $user['id'];
+            return $user;
         }
         return false;
     }
@@ -99,5 +99,22 @@ class User
     public static function auth($userId)
     {
         $_SESSION['user'] = $userId;
+    }
+
+    public static function getUserById($id){
+
+        $db = Db::getConnection();
+
+        $sql = 'SELECT * FROM users WHERE id = :id';
+
+        $result = $db->prepare($sql);
+        $result->setFetchMode(PDO::FETCH_ASSOC);
+        $result->execute([':id' => $id]);
+
+        return $result->fetch();
+    }
+
+    public static function checkAdmin($userId){
+        $_SESSION['admin'] = $userId;
     }
 }
