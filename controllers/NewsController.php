@@ -70,7 +70,7 @@ class NewsController
             $options['image'] = $post['image'];
 
             if (News::editNews($id, $options)) {
-                header("Location: /");
+                header("Location: /news/$id");
             } else {
                 $error = true;
             }
